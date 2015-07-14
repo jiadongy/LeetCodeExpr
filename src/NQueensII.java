@@ -6,10 +6,11 @@
 
  **/
 
-/**
- * Accept
- */
+
 public class NQueensII {
+    /**
+     * Accept
+     */
     public class Solution {
         public int totalNQueens(int n) {
             int[] solution =

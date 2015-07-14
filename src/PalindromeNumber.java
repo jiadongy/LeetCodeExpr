@@ -28,10 +28,10 @@ public class PalindromeNumber {
 
             while (i > 0) {
                 if (x / i == x % j) {
-                    x = x % i / j;//Èç¹ûÓĞ0¾Í²»ÊÊÓÃÁË£¬ËùÒÔwhileÌõ¼ş²»ÄÜÓÃx>=10ÅĞ¶Ï
+                    x = x % i / j;//å¦‚æœæœ‰0å°±ä¸é€‚ç”¨äº†ï¼Œæ‰€ä»¥whileæ¡ä»¶ä¸èƒ½ç”¨x>=10åˆ¤æ–­
                 } else
                     return false;
-                i /= 100;//²»ÊÇ³ı10£¡
+                i /= 100;//ä¸æ˜¯é™¤10ï¼
             }
             return true;
         }
