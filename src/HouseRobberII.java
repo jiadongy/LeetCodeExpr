@@ -1,5 +1,8 @@
 /**
  * Created by Feiyu on 2015/7/15.
+ * 做了很久！WA还是因为DP考虑的不周全，
+ * 注意Dp问题要考虑清楚最优子结构（最优解由最优子解构成）
+ *  和公共子问题是什么？
  **/
 public class HouseRobberII {
     /**
