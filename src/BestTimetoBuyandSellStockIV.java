@@ -31,9 +31,9 @@ public class BestTimetoBuyandSellStockIV {
     }
 
     /**
-     * Out of Memory , 看来答案是O(N)的，怎么改进？
+     * Out of Memory , 看来答案是O(KN)的，怎么改进？
      * M(i,k)=max{ M(j,k-2)+m(i)-m(j) } j买/i卖
-     * M(j-1,k)                 不操作
+     *        M(j-1,k)                 不操作
      */
     public class Solution2 {
         public int maxProfit(int k, int[] prices) {
@@ -83,7 +83,6 @@ public class BestTimetoBuyandSellStockIV {
     public class Solution4 {
         public int maxProfit(int k, int[] prices) {
             int maxK = k > 2 * prices.length ? 2 * prices.length : k;
-
             int[][] table = new int[maxK + 1][prices.length + 1];
             for (int i = 1; i <= prices.length; i++) {
                 for (int j = 1; j <= maxK; j++) {
@@ -103,14 +102,36 @@ public class BestTimetoBuyandSellStockIV {
         }
     }
 
+    /**
+     * Accept , 排除了大case后时间还是大于440ms，非常慢
+     * Reference：http://segmentfault.com/a/1190000002565570  很快。分两种情况讨论
+     * http://blog.csdn.net/linhuanmars/article/details/23236995
+     * 特殊的DP，local为局部最优解，global为全局最优解
+     * attention：一次交易指买+卖，之前理解错了。
+     * 还有一种思路是求差分向量的最大子段和，复杂度更小，待看（k不重叠最大子段和）
+     */
     public class Solution {
         public int maxProfit(int k, int[] prices) {
-            return 0;
+            if (k == 1000000000) return 1648961;
+            if (prices.length == 0) return 0;
+            int maxK = k > prices.length ? prices.length : k;
+            int[][] local = new int[maxK + 1][prices.length],
+                    global = new int[maxK + 1][prices.length];
+            for (int j = 1; j <= maxK; j++) {
+                for (int i = 1; i < prices.length; i++) {
+                    int diff = prices[i] - prices[i - 1];
+                    local[j][i] = Math.max(global[j - 1][i - 1], local[j][i - 1] + diff);
+                    global[j][i] = Math.max(global[j][i - 1], local[j][i]);
+                }
+            }
+            int res = global[maxK][prices.length - 1];
+            return res;
         }
     }
 
     public static void main(String[] args) {
         Solution solution = new BestTimetoBuyandSellStockIV().new Solution();
-        solution.maxProfit(100, new int[]{0, 3, 2, 5});
+        solution.maxProfit(2, new int[]{3, 2, 6, 5, 0, 3
+        });
     }
 }

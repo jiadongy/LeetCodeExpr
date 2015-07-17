@@ -1,15 +1,14 @@
 /**
- * Created by Feiyu on 2015/7/16.
+ * Created by Feiyu on 2015/7/17.
  **/
-public class BestTimetoBuyandSellStockIII {
+public class BestTimetoBuyandSellStock {
     /**
-     * Accept,从4抄过来的
+     * Accept , 从4抄过来
      */
     public class Solution {
         public int maxProfit(int[] prices) {
-
             if (prices.length == 0) return 0;
-            int maxK = 2;
+            int maxK = 1;
             int[][] local = new int[maxK + 1][prices.length],
                     global = new int[maxK + 1][prices.length];
             for (int j = 1; j <= maxK; j++) {
