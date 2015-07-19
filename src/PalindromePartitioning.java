@@ -7,7 +7,7 @@ import java.util.List;
  **/
 public class PalindromePartitioning {
     /**
-     * ÌâÄ¿Àí½â´íÁË£¬Ó¦¸ÃÊÇÇóÊÇËùÓĞ×Ó´®¶¼ÊÇ»ØÊıµÄÇĞ¸î·½·¨£¬²»ÊÇÇóËùÓĞ»ØÊı
+     * WA ï¼š é¢˜ç›®ç†è§£é”™äº†ï¼Œåº”è¯¥æ˜¯æ±‚æ˜¯æ‰€æœ‰å­ä¸²éƒ½æ˜¯å›æ•°çš„åˆ‡å‰²æ–¹æ³•ï¼Œä¸æ˜¯æ±‚æ‰€æœ‰å›æ•°
      */
     public class Solution1 {
         public List<List<String>> partition(String s) {

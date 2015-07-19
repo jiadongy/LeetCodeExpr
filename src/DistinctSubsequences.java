@@ -57,8 +57,9 @@ public class DistinctSubsequences {
     }
 
     /**
-     * return size()/2
-     * Time Out
+     * return list.size()/2 ,即 可行路径数
+     * Time Out ，O(n^3)，怎么改进
+     * 这个方法不能算DP！
      */
     public class Solution {
         public int numDistinct(String s, String t) {
@@ -87,6 +88,7 @@ public class DistinctSubsequences {
                                     sum++;
                                     temp.add(sum * prevSum);
                                     temp.add(k);
+                                    //加入到该点的可行列表，K为下一个点可选坐标必须为K以后
                                 }
                             }
                         }
@@ -94,23 +96,16 @@ public class DistinctSubsequences {
                     lists[i] = temp;
                 }
             }
-            int max = 0;
-            if (lists[lists.length - 1].size() == 0) {
-                max = 0;
-            } else {
-                for (int i = 0; i < lists[lists.length - 1].size() / 2; i++) {
-                    max = (max > ((int) lists[lists.length - 1].get(2 * i))) ?
-                            max : (int) lists[lists.length - 1].get(2 * i);
-                }
-            }
-            return max;
+            return lists[lists.length - 1].size() / 2;
         }
 
     }
 
     public static void main(String... a) {
         Solution solution = new DistinctSubsequences().new Solution();
-        solution.numDistinct("aabdbaabeeadcbbdedacbbeecbabebaeeecaeabaedadcbdbcdaabebdadbbaeabdadeaabbabbecebbebcaddaacccebeaeedababedeacdeaaaeeaecbe",
-                "bddabdcae");
+        solution.numDistinct("rabbbit",
+                "rabbit");
+        /*solution.numDistinct("aabdbaabeeadcbbdedacbbeecbabebaeeecaeabaedadcbdbcdaabebdadbbaeabdadeaabbabbecebbebcaddaacccebeaeedababedeacdeaaaeeaecbe",
+                "bddabdcae");*/
     }
 }
